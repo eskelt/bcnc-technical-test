@@ -12,6 +12,13 @@ paths:
         - products
       summary: Retrieve product information
       operationId: getProduct
+      requestBody:
+        description: Product request data
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductRequestDTO'
       responses:
         '200':
           description: Successful operation
@@ -30,8 +37,22 @@ components:
           type: integer
         feeId:
           type: integer
-        date:
+        startDate:
+          type: string
+          format: date-time
+        endDate:
           type: string
           format: date-time
         price:
-          type: float
+          type: number
+          format: float
+    ProductRequestDTO:
+      type: object
+      properties:
+        applicationDate:
+          type: string
+          format: date-time
+        productId:
+          type: integer
+        brandId:
+          type: integer
