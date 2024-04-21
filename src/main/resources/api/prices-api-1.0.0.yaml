@@ -6,7 +6,7 @@ info:
 servers:
   - url: http://localhost:8080
 paths:
-  /api/products:
+  /api/prices:
     get:
       tags:
         - prices
