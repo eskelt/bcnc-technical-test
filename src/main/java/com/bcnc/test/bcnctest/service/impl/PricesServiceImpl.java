@@ -14,7 +14,6 @@ public class PricesServiceImpl implements PricesService {
 
     @Override
     public PricesInfo getPrice(PricesInfo product) {
-        // Lógica para obtener la información del producto a partir de la fecha de aplicación, el ID del producto y el ID de la cadena
         return pricesRepository.findPriceInfo(product);
     }
 
