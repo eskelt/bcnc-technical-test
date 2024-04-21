@@ -12,7 +12,7 @@ CREATE TABLE public.products (
 	price_list bigint NOT NULL,
 	product_id bigint NOT NULL,
 	priority int NOT NULL,
-	price numeric NOT NULL,
+	price numeric(10, 2) NOT NULL,
 	currency varchar(3) NOT NULL,
 	CONSTRAINT products_pk PRIMARY KEY (id),
 	CONSTRAINT products_brand_fk FOREIGN KEY (brand_id) REFERENCES public.brands(id)
