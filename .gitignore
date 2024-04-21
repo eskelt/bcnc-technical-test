@@ -31,3 +31,8 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Open API Generator ###
+.openapi-generator
+src/main/**/rest/api/
+src/main/**/rest/dto/
