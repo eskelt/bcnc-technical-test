@@ -13,7 +13,8 @@ public interface ProductosJPARepo extends JpaRepository<ProductsEntity, Long> {
             "WHERE :applicationDate BETWEEN p.startDate AND p.endDate " +
             "AND p.productId = :productId " +
             "AND p.brand.id = :brandId " +
-            "ORDER BY p.priority DESC")
+            "ORDER BY p.priority DESC " +
+            "FETCH FIRST 1 ROWS ONLY")
     ProductsEntity findProductInfo(
             @Param("applicationDate") LocalDateTime applicationDate,
             @Param("productId") Integer productId,
