@@ -4,7 +4,7 @@ CREATE TABLE public.brands (
 	CONSTRAINT brands_pk PRIMARY KEY (id)
 );
 
-CREATE TABLE public.products (
+CREATE TABLE public.prices (
 	id serial NOT NULL,
 	brand_id bigint NOT NULL,
 	start_date timestamp NOT NULL,
@@ -14,6 +14,6 @@ CREATE TABLE public.products (
 	priority int NOT NULL,
 	price numeric(10, 2) NOT NULL,
 	currency varchar(3) NOT NULL,
-	CONSTRAINT products_pk PRIMARY KEY (id),
-	CONSTRAINT products_brand_fk FOREIGN KEY (brand_id) REFERENCES public.brands(id)
+	CONSTRAINT prices_pk PRIMARY KEY (id),
+	CONSTRAINT prices_brand_fk FOREIGN KEY (brand_id) REFERENCES public.brands(id)
 );

@@ -112,7 +112,7 @@
 							<goal>generate</goal>
 						</goals>
 						<configuration>
-							<inputSpec>${project.basedir}/src/main/resources/api/products-api-1.0.0.yaml</inputSpec>
+							<inputSpec>${project.basedir}/src/main/resources/api/prices-api-1.0.0.yaml</inputSpec>
 							<output>${project.basedir}/</output>
 							<generateSupportingFiles>false</generateSupportingFiles>
 							<generatorName>spring</generatorName>
@@ -126,7 +126,7 @@
 								<useSpringBoot3>true</useSpringBoot3> <!-- SpringBoot 3 generation needed so dtos use jakarta lib instead of javax -->
 								<skipDefaultInterface>true</skipDefaultInterface>
 								<useBeanValidation>true</useBeanValidation>
-								<useTags>true</useTags> <!-- use tags for creating interface and controller classnames (tags specified in products-api-1.0.0.yaml) -->
+								<useTags>true</useTags> <!-- use tags for creating interface and controller classnames (tags specified in prices-api-1.0.0.yaml) -->
 								<java17>true</java17>
 								<useOptional>false</useOptional>
 								<hideGenerationTimestamp>true</hideGenerationTimestamp>

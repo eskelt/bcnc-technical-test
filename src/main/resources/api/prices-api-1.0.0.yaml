@@ -9,26 +9,26 @@ paths:
   /api/products:
     get:
       tags:
-        - products
-      summary: Retrieve product information
-      operationId: getProduct
+        - prices
+      summary: Retrieve prices information
+      operationId: getPrice
       requestBody:
-        description: Product request data
+        description: Price request data
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ProductRequestDTO'
+              $ref: '#/components/schemas/PricesRequestDTO'
       responses:
         '200':
           description: Successful operation
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ProductsResponseDTO'
+                $ref: '#/components/schemas/PricesResponseDTO'
 components:
   schemas:
-    ProductsResponseDTO:
+    PricesResponseDTO:
       type: object
       properties:
         productId:
@@ -46,7 +46,7 @@ components:
         price:
           type: number
           format: float
-    ProductRequestDTO:
+    PricesRequestDTO:
       type: object
       properties:
         applicationDate:

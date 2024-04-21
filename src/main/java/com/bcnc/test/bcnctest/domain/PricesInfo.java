@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Data
-public class ProductsInfo {
+public class PricesInfo {
     private LocalDateTime applicationDate;
     private Integer productId;
     private Integer brandId;
