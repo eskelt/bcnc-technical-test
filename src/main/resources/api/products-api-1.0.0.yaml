@@ -1,0 +1,37 @@
+openapi: 3.0.0
+info:
+  title: BCNC technical test
+  description: API for BCNC technical test application
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+paths:
+  /api/products:
+    get:
+      tags:
+        - products
+      summary: Retrieve product information
+      operationId: getProduct
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductsResponseDTO'
+components:
+  schemas:
+    ProductsResponseDTO:
+      type: object
+      properties:
+        productId:
+          type: integer
+        brandId:
+          type: integer
+        feeId:
+          type: integer
+        date:
+          type: string
+          format: date-time
+        price:
+          type: float
