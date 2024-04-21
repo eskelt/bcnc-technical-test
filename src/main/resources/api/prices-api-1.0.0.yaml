@@ -26,6 +26,16 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PricesResponseDTO'
+        '404':
+          description: Price not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Price not found for the given request
 components:
   schemas:
     PricesResponseDTO:

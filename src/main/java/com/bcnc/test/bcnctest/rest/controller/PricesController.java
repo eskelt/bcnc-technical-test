@@ -4,6 +4,7 @@ import com.bcnc.test.bcnctest.domain.PricesInfo;
 import com.bcnc.test.bcnctest.rest.api.PricesApi;
 import com.bcnc.test.bcnctest.rest.dto.PricesRequestDTO;
 import com.bcnc.test.bcnctest.rest.dto.PricesResponseDTO;
+import com.bcnc.test.bcnctest.rest.exception.PriceNotFoundException;
 import com.bcnc.test.bcnctest.rest.mapper.PricesRequestMapper;
 import com.bcnc.test.bcnctest.rest.mapper.PricesResponseMapper;
 import com.bcnc.test.bcnctest.service.in.PricesService;
@@ -23,6 +24,10 @@ public class PricesController implements PricesApi {
     public ResponseEntity<PricesResponseDTO> getPrice(PricesRequestDTO pricesRequestDTO) {
         PricesInfo productInfo = pricesService.getPrice(
                 requestMapper.pricesRequestDTOToPricesInfo(pricesRequestDTO));
+
+        if (productInfo == null) {
+            throw new PriceNotFoundException("Price not found for the given request");
+        }
 
         PricesResponseDTO responseDTO = responseMapper.pricesInfoToPricesResponseDTO(productInfo);
 
