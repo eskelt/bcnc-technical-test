@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.bcnc.test</groupId>
 	<artifactId>bcnctest</artifactId>
-	<version>0.1.1-SNAPSHOT</version>
+	<version>0.1.2</version>
 	<name>bcnctest</name>
 	<description>Technical test for BCNC</description>
 	<properties>
@@ -71,14 +71,54 @@
 			<artifactId>jackson-databind-nullable</artifactId>
 			<version>${jackson-databind-nullable.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
 
 	</dependencies>
 
 	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.jacoco</groupId>
+					<artifactId>jacoco-maven-plugin</artifactId>
+					<version>0.8.8</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.1</version>
+				<configuration>
+					<source>17</source>
+					<target>17</target>
+					<annotationProcessorPaths>
+						<path>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+							<version>${org.projectlombok.version}</version>
+						</path>
+						<path>
+							<groupId>org.mapstruct</groupId>
+							<artifactId>mapstruct-processor</artifactId>
+							<version>${org.mapstruct.version}</version>
+						</path>
+					</annotationProcessorPaths>
+				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.openapitools</groupId>
@@ -91,7 +131,7 @@
 							<goal>generate</goal>
 						</goals>
 						<configuration>
-							<inputSpec>${project.basedir}/src/main/resources/api/products-api-1.0.0.yaml</inputSpec>
+							<inputSpec>${project.basedir}/src/main/resources/api/prices-api-1.0.0.yaml</inputSpec>
 							<output>${project.basedir}/</output>
 							<generateSupportingFiles>false</generateSupportingFiles>
 							<generatorName>spring</generatorName>
@@ -105,7 +145,7 @@
 								<useSpringBoot3>true</useSpringBoot3> <!-- SpringBoot 3 generation needed so dtos use jakarta lib instead of javax -->
 								<skipDefaultInterface>true</skipDefaultInterface>
 								<useBeanValidation>true</useBeanValidation>
-								<useTags>true</useTags> <!-- use tags for creating interface and controller classnames (tags specified in products-api-1.0.0.yaml) -->
+								<useTags>true</useTags> <!-- use tags for creating interface and controller classnames (tags specified in prices-api-1.0.0.yaml) -->
 								<java17>true</java17>
 								<useOptional>false</useOptional>
 								<hideGenerationTimestamp>true</hideGenerationTimestamp>
@@ -116,6 +156,24 @@
 								<modelPackage>com.bcnc.test.bcnctest.rest.dto</modelPackage>
 							</configOptions>
 						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>report</id>
+						<phase>test</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
 					</execution>
 				</executions>
 			</plugin>

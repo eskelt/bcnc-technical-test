@@ -1,0 +1,68 @@
+openapi: 3.0.0
+info:
+  title: BCNC technical test
+  description: API for BCNC technical test application
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+paths:
+  /api/prices:
+    get:
+      tags:
+        - prices
+      summary: Retrieve prices information
+      operationId: getPrice
+      requestBody:
+        description: Price request data
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PricesRequestDTO'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PricesResponseDTO'
+        '404':
+          description: Price not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Price not found for the given request
+components:
+  schemas:
+    PricesResponseDTO:
+      type: object
+      properties:
+        productId:
+          type: integer
+        brandId:
+          type: integer
+        feeId:
+          type: integer
+        startDate:
+          type: string
+          format: date-time
+        endDate:
+          type: string
+          format: date-time
+        price:
+          type: number
+          format: float
+    PricesRequestDTO:
+      type: object
+      properties:
+        applicationDate:
+          type: string
+          format: date-time
+        productId:
+          type: integer
+        brandId:
+          type: integer
