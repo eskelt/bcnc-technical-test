@@ -14,6 +14,8 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+import java.time.LocalDateTime;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
@@ -38,9 +40,13 @@ class PricesControllerTest {
 
     @Test
     void testGetPrice() {
-        // Configuración del objeto de solicitud
-        PricesRequestDTO requestDTO = new PricesRequestDTO();
-        PricesInfo requestInfo = new PricesInfo(); // Puede ser un mock si es necesario
+        // Configuración de la solicitud
+        LocalDateTime applicationDate = LocalDateTime.now();
+        Integer productId = 35455;
+        Integer brandId = 1;
+        PricesRequestDTO requestDTO = new PricesRequestDTO(applicationDate, productId, brandId);
+
+        PricesInfo requestInfo = new PricesInfo();
 
         // Mock del resultado esperado del servicio
         PricesInfo expectedInfo = new PricesInfo();
@@ -52,7 +58,7 @@ class PricesControllerTest {
         when(responseMapper.pricesInfoToPricesResponseDTO(expectedInfo)).thenReturn(expectedResponseDTO);
 
         // Ejecución del método a probar
-        ResponseEntity<PricesResponseDTO> responseEntity = pricesController.getPrice(requestDTO);
+        ResponseEntity<PricesResponseDTO> responseEntity = pricesController.getPrice(applicationDate, productId, brandId);
 
         // Verificación de que el servicio y el mapper se llamaron con los argumentos correctos
         verify(requestMapper, times(1)).pricesRequestDTOToPricesInfo(requestDTO);

@@ -12,13 +12,26 @@ paths:
         - prices
       summary: Retrieve prices information
       operationId: getPrice
-      requestBody:
-        description: Price request data
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/PricesRequestDTO'
+      parameters:
+        - in: query
+          name: applicationDate
+          schema:
+            type: string
+            format: date-time
+          required: true
+          description: Date of application for the price
+        - in: query
+          name: productId
+          schema:
+            type: integer
+          required: true
+          description: Numeric ID of the product to get
+        - in: query
+          name: brandId
+          schema:
+            type: integer
+          required: true
+          description: Numeric ID of the brand to get
       responses:
         '200':
           description: Successful operation
