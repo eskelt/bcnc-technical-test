@@ -12,6 +12,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDateTime;
+
 @RequiredArgsConstructor
 @RestController
 public class PricesController implements PricesApi {
@@ -21,9 +23,9 @@ public class PricesController implements PricesApi {
     private final PricesRequestMapper requestMapper;
 
     @Override
-    public ResponseEntity<PricesResponseDTO> getPrice(PricesRequestDTO pricesRequestDTO) {
+    public ResponseEntity<PricesResponseDTO> getPrice(LocalDateTime applicationDate, Integer productId, Integer brandId) {
         PricesInfo productInfo = pricesService.getPrice(
-                requestMapper.pricesRequestDTOToPricesInfo(pricesRequestDTO));
+                requestMapper.pricesRequestDTOToPricesInfo(new PricesRequestDTO(applicationDate, productId, brandId)));
 
         if (productInfo == null) {
             throw new PriceNotFoundException("Price not found for the given request");

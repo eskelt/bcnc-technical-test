@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.bcnc.test</groupId>
 	<artifactId>bcnctest</artifactId>
-	<version>0.1.2</version>
+	<version>0.1.3</version>
 	<name>bcnctest</name>
 	<description>Technical test for BCNC</description>
 	<properties>
@@ -137,6 +137,7 @@
 								<controllerThrowsExceptions>java.io.IOException,com.example.NotFoundException</controllerThrowsExceptions>
 								<interfaceOnly>true</interfaceOnly>
 								<useSpringBoot3>true</useSpringBoot3> <!-- SpringBoot 3 generation needed so dtos use jakarta lib instead of javax -->
+								<additionalModelTypeAnnotations>@lombok.Data @lombok.NoArgsConstructor @lombok.AllArgsConstructor</additionalModelTypeAnnotations>
 								<skipDefaultInterface>true</skipDefaultInterface>
 								<useBeanValidation>true</useBeanValidation>
 								<useTags>true</useTags> <!-- use tags for creating interface and controller classnames (tags specified in prices-api-1.0.0.yaml) -->
