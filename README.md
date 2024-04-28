@@ -47,7 +47,7 @@ Herramienta de análisis de cobertura de código para Java que proporciona métr
 
 #### 2 - Ejecutar la aplicación:
 
-	java -jar target/bcnctest-0.1.2.jar
+	java -jar target/bcnctest-0.1.3.jar
 
 ## Crear y ejecutar un contenedor Docker:
 #### Construir la imagen Docker:
@@ -55,9 +55,9 @@ Ejecutaremos
 
 docker build -t bcnctest:tag . 
 
-donde el tag será la versión que queramos especificar para nuestra imagen. En este ejemplo usaremos 0.1.2:
+donde el tag será la versión que queramos especificar para nuestra imagen. En este ejemplo usaremos 0.1.3:
 
-	docker build -t bcnctest:0.1.2 .
+	docker build -t bcnctest:0.1.3 .
 	
 #### Ejecutar el contenedor Docker:
 Tras crear correctamente la imagen la ejecutaremos con:
@@ -66,7 +66,7 @@ docker run -p 8080:8080 bcnctest:tag
 
 recordando indicar el tag que hubiesemos especificado. En este caso:
 
-	docker run -p 8080:8080 bcnctest:0.1.2
+	docker run -p 8080:8080 bcnctest:0.1.3
 
 
 ## Postman
